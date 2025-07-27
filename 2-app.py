@@ -301,7 +301,7 @@ col1, col2, col3 = st.columns([1.1, 0.9, 2])
 with col1:
     predict_btn = st.button("Analyze Sentiment", 
                             disabled=not st.session_state.sentiment_model_loaded,
-                            Warning="Please load the Sentiment Model first")
+                            warning="Please load the Sentiment Model first")
 with col2:
     clear_btn = st.button("Clear Text")
 
