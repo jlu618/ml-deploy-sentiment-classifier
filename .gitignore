@@ -225,6 +225,7 @@ creds/sentiment-analysis-key.pem
 *tokenizer_map*
 *trainer_state*
 *spiece.model
+*special_token*
 
 
 # Training artifacts
