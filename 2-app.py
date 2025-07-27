@@ -417,7 +417,8 @@ if uploaded_image is not None:
                     'reading': '📖',
                     'cooking': '👨‍🍳',
                     'smiling': '😊',
-                    'dancing': '💃'
+                    'dancing': '💃',
+                    'cycling': '🚴‍♂️',
                 }
                 
                 # Get emoji or use default if not found
