@@ -194,7 +194,10 @@ def download_model_motion():
 
 # App layout
 st.title("📊 Sentiment Analysis & Motion Detection App")
-st.markdown("Analyze text sentiment using TinyBERT model", unsafe_allow_html=True)
+st.markdown("""
+1. **Text Analysis**: Enter your text to analyze sentiment  
+2. **Motion Detection**: Upload an image to classify human activity
+""")
 st.divider()
 
 # Sidebar for model management
