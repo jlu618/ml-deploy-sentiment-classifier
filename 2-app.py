@@ -25,6 +25,7 @@ st.markdown("""
         padding-right: 1rem !important;
     }             
             
+    /* Primary button styling - applies to ALL buttons */
     .stButton>button {
         background-color: #1E88E5 !important;  /* Primary blue color */
         color: white !important;
@@ -54,24 +55,17 @@ st.markdown("""
     }
 
     /* Secondary button styling */
-    .secondary-button>button {
+    .stButton>button[kind="secondary"] {
         background-color: white !important;
         color: #1E88E5 !important;
         border: 1px solid #1E88E5 !important;
-        border-radius: 8px !important;
-        padding: 10px 24px !important;
-        font-weight: 500 !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
 
-    .secondary-button>button:hover {
+    .stButton>button[kind="secondary"]:hover {
         background-color: #E3F2FD !important;
-        transform: translateY(-1px) !important;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
     }
 
-    /* 🟢 Added new rule for buttons with tooltips */
+    /* Make sure primary buttons stay blue even if they have tooltips */
     .stTooltip + .stButton > button {
         background-color: #1E88E5 !important;
         color: white !important;
