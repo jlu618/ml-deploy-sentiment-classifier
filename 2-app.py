@@ -367,6 +367,7 @@ st.title("📊 Sentiment Analysis & Motion Detection App")
 st.markdown("""
 1. **Text Analysis**: Enter your text to analyze sentiment  
 2. **Motion Detection**: Upload an image to classify human activity
+3. **Model Management**: Download and load models as needed before use
 """)
 st.divider()
 
