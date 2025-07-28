@@ -26,32 +26,35 @@ st.markdown("""
     }             
             
     .stButton>button {
-        background-color: #1E88E5 !important;  /* 🟢 Added !important */
-        color: white !important;               /* 🟢 Added !important */
-        border-radius: 8px !important;        /* 🟢 Added !important */
-        padding: 10px 24px !important;        /* 🟢 Added !important */
-        font-weight: 500 !important;          /* 🟢 Added !important */
-        border: none !important;              /* 🟢 Added !important */
-        transition: all 0.3s ease !important; /* 🟢 Added !important */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important; /* 🟢 Added !important */
+        background-color: #1E88E5 !important;  /* Primary blue color */
+        color: white !important;
+        border-radius: 8px !important;
+        padding: 10px 24px !important;
+        font-weight: 500 !important;
+        border: none !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
+
     .stButton>button:hover {
-        background-color: #1565C0 !important;  /* 🟢 Added !important */
-        transform: translateY(-1px) !important; /* 🟢 Added !important */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important; /* 🟢 Added !important */
+        background-color: #1565C0 !important;  /* Darker blue on hover */
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
     }
+
     .stButton>button:active {
-        transform: translateY(0) !important;   /* 🟢 Added !important */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important; /* 🟢 Added !important */
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
+
     .stButton>button:disabled {
-        background-color: #90CAF9 !important;  /* 🟢 Added !important */
-        cursor: not-allowed !important;       /* 🟢 Added !important */
-        opacity: 0.7;                         /* 🟢 Added new property */
+        background-color: #90CAF9 !important;
+        cursor: not-allowed !important;
+        opacity: 0.7;
     }
 
     /* Secondary button styling */
-        .secondary-button>button {
+    .secondary-button>button {
         background-color: white !important;
         color: #1E88E5 !important;
         border: 1px solid #1E88E5 !important;
@@ -66,11 +69,6 @@ st.markdown("""
         background-color: #E3F2FD !important;
         transform: translateY(-1px) !important;
         box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
-    }
-
-    .secondary-button>button:active {
-        transform: translateY(0) !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
 
     /* 🟢 Added new rule for buttons with tooltips */
