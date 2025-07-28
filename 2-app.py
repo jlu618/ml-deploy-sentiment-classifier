@@ -25,50 +25,61 @@ st.markdown("""
         padding-right: 1rem !important;
     }             
             
-    /* Primary button styling - applies to ALL buttons */
+    /* Primary Button Styling */
     .stButton>button {
-        background-color: #1E88E5 !important;  /* Primary blue color */
+        background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%) !important;
         color: white !important;
-        border-radius: 8px !important;
-        padding: 10px 24px !important;
-        font-weight: 500 !important;
         border: none !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        border-radius: 12px !important;
+        padding: 12px 28px !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        text-transform: none !important;
+        box-shadow: 0 4px 6px rgba(30, 136, 229, 0.2) !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        cursor: pointer !important;
     }
 
     .stButton>button:hover {
-        background-color: #1565C0 !important;  /* Darker blue on hover */
-        transform: translateY(-1px) !important;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+        background: linear-gradient(135deg, #1976D2 0%, #0B3D91 100%) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 12px rgba(30, 136, 229, 0.3) !important;
     }
 
     .stButton>button:active {
         transform: translateY(0) !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        box-shadow: 0 2px 4px rgba(30, 136, 229, 0.2) !important;
     }
 
     .stButton>button:disabled {
-        background-color: #90CAF9 !important;
+        background: #BBDEFB !important;
+        transform: none !important;
+        box-shadow: none !important;
         cursor: not-allowed !important;
-        opacity: 0.7;
     }
 
-    /* Secondary button styling */
+    /* Secondary Button Styling */
     .stButton>button[kind="secondary"] {
-        background-color: white !important;
+        background: white !important;
         color: #1E88E5 !important;
-        border: 1px solid #1E88E5 !important;
+        border: 2px solid #1E88E5 !important;
+        border-radius: 12px !important;
+        padding: 12px 28px !important;
+        font-weight: 600 !important;
+        box-shadow: none !important;
+        transition: all 0.3s ease !important;
     }
 
     .stButton>button[kind="secondary"]:hover {
-        background-color: #E3F2FD !important;
+        background: #E3F2FD !important;
+        color: #0D47A1 !important;
+        border-color: #0D47A1 !important;
     }
 
-    /* Make sure primary buttons stay blue even if they have tooltips */
-    .stTooltip + .stButton > button {
-        background-color: #1E88E5 !important;
-        color: white !important;
+    /* Focus State */
+    .stButton>button:focus:not(:active) {
+        outline: 2px solid #90CAF9 !important;
+        outline-offset: 2px !important;
     }
     
     /* Text area styling */
