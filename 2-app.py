@@ -329,7 +329,7 @@ with col1:
                             type="primary" )
 with col2:
     clear_btn = st.button(
-        "Clear Text"
+        "Clear Text",
         key="clear_text_btn",
         help="Clear the text input box",
         type="secondary"
