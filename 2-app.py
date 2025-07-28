@@ -121,6 +121,8 @@ if 'motion_model_loaded' not in st.session_state:
     st.session_state.motion_model_loaded = False
 if 'motion_model_downloaded' not in st.session_state:
     st.session_state.motion_model_downloaded = os.path.exists(MODEL_PATH_Motion)
+if 'uploaded_image_key' not in st.session_state:
+    st.session_state.uploaded_image_key = 0
 
 # S3 download function
 def download_model_sentiment():
@@ -357,7 +359,8 @@ st.subheader("🤖 Human Motion Detection")
 uploaded_image = st.file_uploader(
     "Upload an image for motion detection:",
     type=["jpg", "jpeg", "png"],
-    help="Upload an image containing a person to detect their motion/activity"
+    help="Upload an image containing a person to detect their motion/activity",
+    key=f"file_uploader_{st.session_state.uploaded_image_key}"  
 )
 
 # Create columns for buttons
@@ -375,7 +378,7 @@ with motion_col2:
 
 if delete_btn:
     # Clear the uploaded image from session state
-    st.session_state.motion_image_uploader = None
+    st.session_state.uploaded_image_key += 1
     st.rerun()
 
 if uploaded_image is not None:
