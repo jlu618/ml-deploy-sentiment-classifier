@@ -25,39 +25,45 @@ st.markdown("""
         padding-right: 1rem !important;
     }             
             
-    /* Main button styling */
     .stButton>button {
-        background-color: #1E88E5;
-        color: white;
-        border-radius: 8px;
-        padding: 10px 24px;
-        font-weight: 500;
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background-color: #1E88E5 !important;  /* 🟢 Added !important */
+        color: white !important;               /* 🟢 Added !important */
+        border-radius: 8px !important;        /* 🟢 Added !important */
+        padding: 10px 24px !important;        /* 🟢 Added !important */
+        font-weight: 500 !important;          /* 🟢 Added !important */
+        border: none !important;              /* 🟢 Added !important */
+        transition: all 0.3s ease !important; /* 🟢 Added !important */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important; /* 🟢 Added !important */
     }
     .stButton>button:hover {
-        background-color: #1565C0;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        background-color: #1565C0 !important;  /* 🟢 Added !important */
+        transform: translateY(-1px) !important; /* 🟢 Added !important */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important; /* 🟢 Added !important */
     }
     .stButton>button:active {
-        transform: translateY(0);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transform: translateY(0) !important;   /* 🟢 Added !important */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important; /* 🟢 Added !important */
     }
     .stButton>button:disabled {
-        background-color: #90CAF9;
-        cursor: not-allowed;
+        background-color: #90CAF9 !important;  /* 🟢 Added !important */
+        cursor: not-allowed !important;       /* 🟢 Added !important */
+        opacity: 0.7;                         /* 🟢 Added new property */
     }
-    
+
     /* Secondary button styling */
     .secondary-button>button {
-        background-color: white;
-        color: #1E88E5;
-        border: 1px solid #1E88E5;
+        background-color: white !important;    /* 🟢 Added !important */
+        color: #1E88E5 !important;            /* 🟢 Added !important */
+        border: 1px solid #1E88E5 !important; /* 🟢 Added !important */
     }
     .secondary-button>button:hover {
-        background-color: #E3F2FD;
+        background-color: #E3F2FD !important;  /* 🟢 Added !important */
+    }
+
+    /* 🟢 Added new rule for buttons with tooltips */
+    .stTooltip + .stButton > button {
+        background-color: #1E88E5 !important;
+        color: white !important;
     }
     
     /* Text area styling */
