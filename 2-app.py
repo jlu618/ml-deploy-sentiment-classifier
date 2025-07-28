@@ -318,13 +318,12 @@ with col1:
     predict_btn = st.button("Analyze Sentiment", 
                             disabled=not st.session_state.sentiment_model_loaded,
                             help="Please load the Sentiment Model first",
-                            type="primary" )
+                            )
 with col2:
     clear_btn = st.button(
         "Clear Text",
         key="clear_text_btn",
-        help="Clear the text input box",
-        type="secondary"
+        help="Clear the text input box"
         )
 
 # Clear text when button is clicked
@@ -387,16 +386,14 @@ with motion_col1:
     detect_btn = st.button(
         "Analyze Motion",
         disabled=not st.session_state.motion_model_loaded,
-        help="Please load the Motion Detection Model first",
-        type="primary" 
+        help="Please load the Motion Detection Model first"
     )
 
 with motion_col2:
     delete_btn = st.button(
         "Delete Image",
         key="delete_image_btn",
-        help="Remove the uploaded image",
-        type="secondary"  
+        help="Remove the uploaded image"
     )
 
 if delete_btn:
