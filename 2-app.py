@@ -10,117 +10,130 @@ from PIL import Image
 # Set page config first
 st.set_page_config(
     page_title="Quick ML App",
-    page_icon="😊",
+    page_icon="✨",
     layout="centered",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for styling
+# Enhanced CSS styling
 st.markdown("""
-<style>   
-    /* General body styling */
-    section.main > div {
-        max-width: 80rem !important;  
-        padding-left: 1rem !important;  
-        padding-right: 1rem !important;
-    }             
-            
-    /* Primary Button Styling */
-    .stButton>button {
-        background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%) !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 12px !important;
-        padding: 12px 28px !important;
-        font-weight: 600 !important;
-        font-size: 16px !important;
-        text-transform: none !important;
-        box-shadow: 0 4px 6px rgba(30, 136, 229, 0.2) !important;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-        cursor: pointer !important;
-    }
-
-    .stButton>button:hover {
-        background: linear-gradient(135deg, #1976D2 0%, #0B3D91 100%) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 12px rgba(30, 136, 229, 0.3) !important;
-    }
-
-    .stButton>button:active {
-        transform: translateY(0) !important;
-        box-shadow: 0 2px 4px rgba(30, 136, 229, 0.2) !important;
-    }
-
-    .stButton>button:disabled {
-        background: #BBDEFB !important;
-        transform: none !important;
-        box-shadow: none !important;
-        cursor: not-allowed !important;
-    }
-
-    /* Secondary Button Styling */
-    .stButton>button[kind="secondary"] {
-        background: white !important;
-        color: #1E88E5 !important;
-        border: 2px solid #1E88E5 !important;
-        border-radius: 12px !important;
-        padding: 12px 28px !important;
-        font-weight: 600 !important;
-        box-shadow: none !important;
-        transition: all 0.3s ease !important;
-    }
-
-    .stButton>button[kind="secondary"]:hover {
-        background: #E3F2FD !important;
-        color: #0D47A1 !important;
-        border-color: #0D47A1 !important;
-    }
-
-    /* Focus State */
-    .stButton>button:focus:not(:active) {
-        outline: 2px solid #90CAF9 !important;
-        outline-offset: 2px !important;
-    }
-    
-    /* Text area styling */
-    .stTextArea>div>div>textarea {
-        border-radius: 10px;
-        padding: 15px;
-        border: 1px solid #BBDEFB;
+<style>
+    /* Main container */
+    .main {
+        background-color: #f8f9fa;
     }
     
     /* Header styling */
-    .header {
-        color: #0D47A1;
+    h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
     }
-    /* Result boxes */
+    
+    h2 {
+        color: #2980b9;
+        margin-top: 1.5rem;
+    }
+    
+    /* Card-like sections */
+    .card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Enhanced buttons */
+    .stButton>button {
+        background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .stButton>button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Text input styling */
+    .stTextArea>div>div>textarea {
+        border-radius: 8px;
+        border: 1px solid #dfe6e9;
+        padding: 12px;
+    }
+    
+    /* Sidebar enhancements */
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+    }
+    
+    .sidebar .sidebar-content {
+        color: white;
+    }
+    
+    /* Result boxes with animations */
     .result-box {
         border-radius: 12px;
         padding: 20px;
         margin: 20px 0;
-        box-shadow: 0 4px 12px rgba(30, 136, 229, 0.1);
-        border-left: 5px solid;
+        animation: fadeIn 0.5s ease-in-out;
+        transition: all 0.3s ease;
     }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
     .positive {
-        background-color: #E8F5E9;
-        border-left-color: #43A047;
+        background: linear-gradient(135deg, #e3f9e5 0%, #c8e6c9 100%);
+        border-left: 5px solid #4CAF50;
     }
+    
     .negative {
-        background-color: #FFEBEE;
-        border-left-color: #E53935;
+        background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+        border-left: 5px solid #F44336;
     }
     
-    /* Progress spinner */
+    /* Progress bar styling */
+    .stProgress>div>div>div {
+        background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+    }
+    
+    /* File uploader styling */
+    .stFileUploader>div {
+        border: 2px dashed #3498db;
+        border-radius: 12px;
+        padding: 20px;
+        background: rgba(52, 152, 219, 0.05);
+    }
+    
+    /* Spinner styling */
     .stSpinner>div {
-        border-color: #1E88E5 transparent transparent transparent;
+        border-color: #3498db transparent transparent transparent;
     }
     
-    /* Sidebar styling */
-    [data-testid="stSidebar"] {
-        background-color: #E3F2FD;
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 10px;
     }
-    .sidebar-header {
-        color: #0D47A1;
+    
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 8px 8px 0 0;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Add glow effect to important elements */
+    .glow {
+        box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
     }
 </style>
 """, unsafe_allow_html=True)
