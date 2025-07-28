@@ -51,13 +51,26 @@ st.markdown("""
     }
 
     /* Secondary button styling */
-    .secondary-button>button {
-        background-color: white !important;    /* 🟢 Added !important */
-        color: #1E88E5 !important;            /* 🟢 Added !important */
-        border: 1px solid #1E88E5 !important; /* 🟢 Added !important */
+        .secondary-button>button {
+        background-color: white !important;
+        color: #1E88E5 !important;
+        border: 1px solid #1E88E5 !important;
+        border-radius: 8px !important;
+        padding: 10px 24px !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
+
     .secondary-button>button:hover {
-        background-color: #E3F2FD !important;  /* 🟢 Added !important */
+        background-color: #E3F2FD !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+    }
+
+    .secondary-button>button:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
 
     /* 🟢 Added new rule for buttons with tooltips */
@@ -315,7 +328,12 @@ with col1:
                             help="Please load the Sentiment Model first",
                             type="primary" )
 with col2:
-    clear_btn = st.button("Clear Text")
+    clear_btn = st.button(
+        "Clear Text"
+        key="clear_text_btn",
+        help="Clear the text input box",
+        type="secondary"
+        )
 
 # Clear text when button is clicked
 if clear_btn:
@@ -382,7 +400,12 @@ with motion_col1:
     )
 
 with motion_col2:
-    delete_btn = st.button("Delete Image")
+    delete_btn = st.button(
+        "Delete Image",
+        key="delete_image_btn",
+        help="Remove the uploaded image",
+        type="secondary"  
+    )
 
 if delete_btn:
     # Clear the uploaded image from session state
