@@ -306,7 +306,8 @@ col1, col2, col3 = st.columns([1.1, 0.9, 2])
 with col1:
     predict_btn = st.button("Analyze Sentiment", 
                             disabled=not st.session_state.sentiment_model_loaded,
-                            help="Please load the Sentiment Model first")
+                            help="Please load the Sentiment Model first",
+                            type="primary" )
 with col2:
     clear_btn = st.button("Clear Text")
 
@@ -370,7 +371,8 @@ with motion_col1:
     detect_btn = st.button(
         "Analyze Motion",
         disabled=not st.session_state.motion_model_loaded,
-        help="Please load the Motion Detection Model first"
+        help="Please load the Motion Detection Model first",
+        type="primary" 
     )
 
 with motion_col2:
