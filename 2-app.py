@@ -18,122 +18,255 @@ st.set_page_config(
 # Enhanced CSS styling
 st.markdown("""
 <style>
-    /* Main container */
+    /* Main container with subtle gradient */
     .main {
-        background-color: #f8f9fa;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        padding: 2rem;
     }
     
-    /* Header styling */
+    /* Typography hierarchy with smooth transitions */
     h1 {
         color: #2c3e50;
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 10px;
+        font-weight: 700;
+        border-bottom: 3px solid;
+        border-image: linear-gradient(90deg, #3498db, #2c3e50) 1;
+        padding-bottom: 12px;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
     }
     
     h2 {
         color: #2980b9;
-        margin-top: 1.5rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        position: relative;
+        padding-left: 1rem;
     }
     
-    /* Card-like sections */
+    h2:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: linear-gradient(to bottom, #3498db, #2c3e50);
+        border-radius: 4px;
+    }
+    
+    /* Modern card design with hover effects */
     .card {
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.2);
     }
     
-    /* Enhanced buttons */
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+    
+    /* Buttons with modern gradient and micro-interactions */
     .stButton>button {
-        background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 12px 24px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 12px 28px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        box-shadow: 0 4px 8px rgba(74, 108, 247, 0.25) !important;
+        letter-spacing: 0.5px;
     }
-    
+            
+    /* TARGET PRIMARY BUTTONS SPECIFICALLY */
+    button[kind="primary"] {
+        background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 12px 28px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 8px rgba(74, 108, 247, 0.25) !important;
+    }
+    /* HOVER STATES */
+    button[kind="primary"]:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 16px rgba(74, 108, 247, 0.3) !important;
+    }
+    /* DISABLED STATES */
+    button[kind="primary"]:disabled {
+        opacity: 0.7 !important;
+        background: linear-gradient(135deg, #b0c0f0 0%, #8a9ef0 100%) !important;
+    }
+            
+    /* Specifically target disabled buttons with help tooltips */
+    .stButton>button:disabled {
+        background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%) !important;
+        opacity: 0.7 !important;
+        color: white !important;
+    }
+
+            
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 16px rgba(74, 108, 247, 0.3) !important;
     }
     
-    /* Text input styling */
-    .stTextArea>div>div>textarea {
-        border-radius: 8px;
-        border: 1px solid #dfe6e9;
-        padding: 12px;
+    .stButton>button:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 4px 8px rgba(74, 108, 247, 0.3) !important;
+    }
+            
+    /* Target buttons with help tooltips */
+    .stButton button[data-testid="baseButton-secondary"] {
+        background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 12px 28px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        box-shadow: 0 4px 8px rgba(74, 108, 247, 0.25) !important;
+        letter-spacing: 0.5px;
+    }
+
+    /* Hover states for both */
+    .stButton>button:hover,
+    .stButton button[data-testid="baseButton-secondary"]:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 16px rgba(74, 108, 247, 0.3) !important;
     }
     
-    /* Sidebar enhancements */
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
-        color: white;
+    /* Input fields with modern styling */
+    .stTextInput>div>div>input,
+    .stTextArea>div>div>textarea,
+    .stNumberInput>div>div>input {
+        border-radius: 12px !important;
+        border: 1px solid #dfe6e9 !important;
+        padding: 12px 16px !important;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        transition: border 0.3s ease, box-shadow 0.3s ease;
     }
     
-    .sidebar .sidebar-content {
-        color: white;
+    .stTextInput>div>div>input:focus,
+    .stTextArea>div>div>textarea:focus,
+    .stNumberInput>div>div>input:focus {
+        border-color: #4a6cf7 !important;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 0 0 2px rgba(74, 108, 247, 0.2);
     }
     
-    /* Result boxes with animations */
-    .result-box {
-        border-radius: 12px;
-        padding: 20px;
-        margin: 20px 0;
-        animation: fadeIn 0.5s ease-in-out;
+    /* Enhanced alerts and info boxes */
+    .stAlert {
+        border-radius: 12px !important;
+        padding: 16px 20px !important;
+    }
+    
+    .stInfo {
+        background-color: #f0f7ff !important;
+        border-left: 4px solid #4a6cf7 !important;
+    }
+    
+    .stWarning {
+        background-color: #fff8e6 !important;
+        border-left: 4px solid #ffb74d !important;
+    }
+    
+    .stSuccess {
+        background-color: #edf7ed !important;
+        border-left: 4px solid #66bb6a !important;
+    }
+    
+    /* File uploader with modern look */
+    .stFileUploader>div {
+        border: 2px dashed #4a6cf7 !important;
+        border-radius: 16px !important;
+        padding: 2rem !important;
+        background: rgba(74, 108, 247, 0.03) !important;
         transition: all 0.3s ease;
     }
     
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
+    .stFileUploader>div:hover {
+        background: rgba(74, 108, 247, 0.08) !important;
+    }
+    
+    /* Progress bar with gradient */
+    .stProgress>div>div>div {
+        background: linear-gradient(90deg, #6e8efb 0%, #4a6cf7 100%) !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Tabs with modern styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        padding: 8px 0;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        background: transparent !important;
+        border-radius: 12px !important;
+        padding: 10px 24px !important;
+        transition: all 0.3s ease !important;
+        color: #64748b !important;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #6e8efb 0%, #4a6cf7 100%) !important;
+        color: white !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Result boxes with polished animations */
+    .result-box {
+        border-radius: 16px;
+        padding: 24px;
+        margin: 24px 0;
+        animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
     
     .positive {
-        background: linear-gradient(135deg, #e3f9e5 0%, #c8e6c9 100%);
-        border-left: 5px solid #4CAF50;
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-left: 5px solid #66bb6a;
     }
     
     .negative {
         background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
-        border-left: 5px solid #F44336;
+        border-left: 5px solid #ef5350;
     }
     
-    /* Progress bar styling */
-    .stProgress>div>div>div {
-        background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
-    }
-    
-    /* File uploader styling */
-    .stFileUploader>div {
-        border: 2px dashed #3498db;
-        border-radius: 12px;
-        padding: 20px;
-        background: rgba(52, 152, 219, 0.05);
-    }
-    
-    /* Spinner styling */
+    /* Spinner with brand color */
     .stSpinner>div {
-        border-color: #3498db transparent transparent transparent;
+        border-color: #4a6cf7 transparent transparent transparent !important;
     }
     
-    /* Tab styling */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
+    /* Dataframe styling */
+    .stDataFrame {
+        border-radius: 16px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
     }
     
-    .stTabs [data-baseweb="tab"] {
-        border-radius: 8px 8px 0 0;
-        padding: 10px 20px;
-        transition: all 0.3s ease;
+    /* Metric cards */
+    [data-testid="metric-container"] {
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        padding: 16px !important;
+        transition: all 0.3s ease !important;
     }
     
-    /* Add glow effect to important elements */
-    .glow {
-        box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+    [data-testid="metric-container"]:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.12) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -342,12 +475,14 @@ with col1:
     predict_btn = st.button("Analyze Sentiment", 
                             disabled=not st.session_state.sentiment_model_loaded,
                             help="Please load the Sentiment Model first",
+                            type="primary"
                             )
 with col2:
     clear_btn = st.button(
         "Clear Text",
         key="clear_text_btn",
-        help="Clear the text input box"
+        help="Clear the text input box",
+        type="primary"
         )
 
 # Clear text when button is clicked
@@ -410,14 +545,16 @@ with motion_col1:
     detect_btn = st.button(
         "Analyze Motion",
         disabled=not st.session_state.motion_model_loaded,
-        help="Please load the Motion Detection Model first"
+        help="Please load the Motion Detection Model first",
+        type="primary"
     )
 
 with motion_col2:
     delete_btn = st.button(
         "Delete Image",
         key="delete_image_btn",
-        help="Remove the uploaded image"
+        help="Remove the uploaded image",
+        type="primary"
     )
 
 if delete_btn:
